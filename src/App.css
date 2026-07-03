@@ -178,10 +178,7 @@
 }
 
 .float-badge {
-  --orbit-r: 215px;
   position: absolute;
-  top: 50%;
-  left: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -192,8 +189,7 @@
   border: 1px solid var(--card-border);
   box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.6);
   font-size: 13px;
-  animation: orbit 24s linear infinite;
-  will-change: transform;
+  animation: float 5s ease-in-out infinite;
 }
 
 .badge-value {
@@ -209,28 +205,34 @@
 }
 
 .badge-1 {
+  top: 10px;
+  left: -10px;
   animation-delay: 0s;
 }
 
 .badge-2 {
-  animation-delay: -8s;
+  bottom: 30px;
+  right: -20px;
+  animation-delay: 1.2s;
 }
 
 .badge-3 {
   flex-direction: row;
+  bottom: -10px;
+  left: 30px;
   gap: 8px;
   color: var(--silver-light);
   font-weight: 600;
   font-size: 13px;
-  animation-delay: -16s;
+  animation-delay: 2.2s;
 }
 
-@keyframes orbit {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg) translateX(var(--orbit-r)) rotate(0deg);
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
   }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg) translateX(var(--orbit-r)) rotate(-360deg);
+  50% {
+    transform: translateY(-12px);
   }
 }
 
@@ -250,7 +252,6 @@
     font-size: 52px;
   }
   .float-badge {
-    --orbit-r: 150px;
     padding: 9px 14px;
   }
 }
