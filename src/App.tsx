@@ -120,7 +120,8 @@ const PARTNERS = [
   'isystem IT Academy',
 ]
 
-const FORM_ENDPOINT = 'https://formsubmit.co/ajax/ranizomiddin@gmail.com'
+const TG_BOT_TOKEN = '8839581442:AAEqZczGR3hrnXklHQ_8LsLEboy1HksrOcU'
+const TG_CHAT_IDS = ['726130790', '8675594932']
 
 function App() {
   const [formState, setFormState] = useState({ name: '', contact: '', message: '' })
@@ -129,18 +130,24 @@ function App() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus('sending')
+    const text = [
+      '📩 Kameliya SMM saytidan yangi xabar',
+      '',
+      `👤 Ism: ${formState.name}`,
+      `📞 Kontakt: ${formState.contact}`,
+      `💬 Xabar: ${formState.message}`,
+    ].join('\n')
     try {
-      const res = await fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          _subject: 'Kameliya SMM saytidan yangi xabar',
-          Ism: formState.name,
-          Kontakt: formState.contact,
-          Xabar: formState.message,
-        }),
-      })
-      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      const results = await Promise.all(
+        TG_CHAT_IDS.map((chatId) =>
+          fetch(`https://api.telegram.org/bot${TG_BOT_TOKEN}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: chatId, text }),
+          }),
+        ),
+      )
+      if (!results.some((r) => r.ok)) throw new Error('Telegram send failed')
       setStatus('sent')
       setFormState({ name: '', contact: '', message: '' })
     } catch {
