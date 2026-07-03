@@ -121,7 +121,7 @@ const PARTNERS = [
 ]
 
 const TG_BOT_TOKEN = '8839581442:AAEqZczGR3hrnXklHQ_8LsLEboy1HksrOcU'
-const TG_CHAT_IDS = ['726130790', '8675594932']
+const TG_CHAT_IDS = ['726130790', '8675594932', '5017111197']
 
 function App() {
   const [formState, setFormState] = useState({ name: '', contact: '', message: '' })
