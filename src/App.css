@@ -205,21 +205,21 @@
 }
 
 .badge-1 {
-  top: 10px;
-  left: -10px;
+  top: calc(50% - 190px);
+  left: calc(50% - 255px);
   animation-delay: 0s;
 }
 
 .badge-2 {
-  bottom: 30px;
-  right: -20px;
+  top: calc(50% + 10px);
+  left: calc(50% + 165px);
   animation-delay: 1.2s;
 }
 
 .badge-3 {
   flex-direction: row;
-  bottom: -10px;
-  left: 30px;
+  top: calc(50% + 165px);
+  left: calc(50% - 165px);
   gap: 8px;
   color: var(--silver-light);
   font-weight: 600;
@@ -253,6 +253,18 @@
   }
   .float-badge {
     padding: 9px 14px;
+  }
+  .badge-1 {
+    top: calc(50% - 155px);
+    left: calc(50% - 175px);
+  }
+  .badge-2 {
+    top: calc(50% + 5px);
+    left: calc(50% + 120px);
+  }
+  .badge-3 {
+    top: calc(50% + 125px);
+    left: calc(50% - 130px);
   }
 }
 
