@@ -141,8 +141,15 @@
   height: 300px;
   border-radius: 50%;
   padding: 6px;
-  background: conic-gradient(from 180deg, #f5f7f9, #c9d0d8, #7d8792, #c9d0d8, #f5f7f9);
   box-shadow: var(--shadow-silver);
+}
+
+.avatar-ring::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(from 180deg, #f5f7f9, #c9d0d8, #7d8792, #c9d0d8, #f5f7f9);
   animation: spin 12s linear infinite;
 }
 
@@ -164,7 +171,7 @@
   font-size: 72px;
   font-weight: 700;
   color: var(--silver-light);
-  animation: spin 12s linear infinite reverse;
+  position: relative;
 }
 
 .avatar-img {
@@ -174,7 +181,6 @@
   height: calc(100% - 12px);
   border-radius: 50%;
   object-fit: cover;
-  animation: spin 12s linear infinite reverse;
 }
 
 .float-badge {
@@ -270,9 +276,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .float-badge,
-  .avatar-ring,
-  .avatar-placeholder,
-  .avatar-img {
+  .avatar-ring::before {
     animation: none;
   }
 }
