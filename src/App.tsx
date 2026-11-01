@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import Icon from './Icon'
 import './App.css'
 
@@ -578,6 +579,7 @@ function App() {
           <p>&copy; {new Date().getFullYear()} Kamilla Abdullaeva &middot; Barcha huquqlar himoyalangan</p>
         </div>
       </footer>
+      <SpeedInsights />
     </>
   )
 }
